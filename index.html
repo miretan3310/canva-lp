@@ -9,15 +9,22 @@
             padding: 0;
             height: 100%;
             width: 100%;
-            background: #ffffff; /* 黒背景防止 */
+            background: #ffffff; /* ページ全体の背景を白 */
         }
-        iframe {
+        #iframe-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background: #ffffff; /* iframeの下地も白 */
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
             border: none;
+            display: block;
+            background: #ffffff; /* iframe自体も白背景に */
         }
     </style>
     <script>
@@ -35,7 +42,11 @@
                 if (!visitedAt) {
                     localStorage.setItem(COOKIE_NAME, now.toString());
                 }
-                document.body.innerHTML = `<iframe src="${CANVA_URL}" allowfullscreen></iframe>`;
+                document.body.innerHTML = `
+                    <div id="iframe-container">
+                        <iframe src="${CANVA_URL}" allowfullscreen></iframe>
+                    </div>
+                `;
             }
         };
     </script>
