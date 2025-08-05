@@ -5,42 +5,25 @@
     <title>LP 3日後リダイレクト</title>
     <script>
         const REDIRECT_URL = "https://kyasha-bodymake.my.canva.site/close-seminar";
+        const CANVA_URL = "https://kyasha-bodymake.my.canva.site/promotion";
         const COOKIE_NAME = "visitedAt";
 
         window.onload = function () {
             const visitedAt = localStorage.getItem(COOKIE_NAME);
             const now = Date.now();
 
-            // 3日経過後にリダイレクト
             if (visitedAt && now - parseInt(visitedAt, 10) > 3 * 24 * 60 * 60 * 1000) {
                 window.location.href = REDIRECT_URL;
-            } else if (!visitedAt) {
-                localStorage.setItem(COOKIE_NAME, now.toString());
+            } else {
+                if (!visitedAt) {
+                    localStorage.setItem(COOKIE_NAME, now.toString());
+                }
+                window.location.href = CANVA_URL;
             }
         };
     </script>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            background: #fff;
-        }
-        iframe {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-    </style>
 </head>
 <body>
-    <iframe 
-        src="https://www.canva.com/design/DAGKRwgiu1Y/PNiYfK6FZyCj2PgOnPCSEg/view?embed" 
-        allowfullscreen>
-    </iframe>
+    <p>ページを読み込み中...</p>
 </body>
 </html>
