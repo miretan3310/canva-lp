@@ -11,6 +11,7 @@
             const visitedAt = localStorage.getItem(COOKIE_NAME);
             const now = Date.now();
 
+            // 3日経過後にリダイレクト
             if (visitedAt && now - parseInt(visitedAt, 10) > 3 * 24 * 60 * 60 * 1000) {
                 window.location.href = REDIRECT_URL;
             } else if (!visitedAt) {
@@ -23,10 +24,11 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            background-color: #fff;
+            width: 100%;
+            background: #fff;
         }
         iframe {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -38,12 +40,7 @@
 <body>
     <iframe 
         src="https://www.canva.com/design/DAGKRwgiu1Y/PNiYfK6FZyCj2PgOnPCSEg/view?embed" 
-        allowfullscreen="allowfullscreen">
-    </iframe>
-</body>
-</html>
-        src="https://www.canva.com/design/DAGKRwgiu1Y/PNiYfK6FZyCj2PgOnPCSEg/view?embed" 
-        allowfullscreen="allowfullscreen">
+        allowfullscreen>
     </iframe>
 </body>
 </html>
