@@ -2,14 +2,14 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>LP 1分リダイレクトテスト</title>
+    <title>LP 3日後リダイレクト</title>
     <style>
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
             width: 100%;
-            background: #ffffff;
+            background: #ffffff; /* 黒背景防止 */
         }
         iframe {
             position: absolute;
@@ -21,7 +21,7 @@
         }
     </style>
     <script>
-        const REDIRECT_URL = "https://kyasha-bodymake.my.canva.site/close-seminar";
+        const REDIRECT_URL = "https://kyasha-bodymake.my.canva.site/close-seminar"; 
         const CANVA_URL = "https://www.canva.com/design/DAGKRwgiu1Y/PNiYfK6FZyCj2PgOnPCSEg/view?embed";
         const COOKIE_NAME = "visitedAt";
 
@@ -29,8 +29,8 @@
             const visitedAt = localStorage.getItem(COOKIE_NAME);
             const now = Date.now();
 
-            // ★1分でリダイレクト
-            if (visitedAt && now - parseInt(visitedAt, 10) > 1 * 60 * 1000) {
+            // 3日後にリダイレクト
+            if (visitedAt && now - parseInt(visitedAt, 10) > 3 * 24 * 60 * 60 * 1000) {
                 window.location.href = REDIRECT_URL;
             } else {
                 if (!visitedAt) {
