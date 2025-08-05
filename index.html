@@ -9,24 +9,29 @@
             padding: 0;
             height: 100%;
             width: 100%;
-            background: #ffffff; /* ページ全体の背景を白 */
+            background: #ffffff;
         }
-        #iframe-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100%;
-            background: #ffffff; /* iframeの下地も白 */
+            width: 100%;
+            background: #ffffff;
         }
         iframe {
+            display: none;
             width: 100%;
             height: 100%;
             border: none;
-            display: block;
-            background: #ffffff; /* iframe自体も白背景に */
         }
     </style>
+</head>
+<body>
+    <div id="container">
+        <p>ページを読み込み中...</p>
+    </div>
+
     <script>
         const REDIRECT_URL = "https://kyasha-bodymake.my.canva.site/close-seminar";
         const CANVA_URL = "https://www.canva.com/design/DAGKRwgiu1Y/PNiYfK6FZyCj2PgOnPCSEg/view?embed";
@@ -42,16 +47,12 @@
                 if (!visitedAt) {
                     localStorage.setItem(COOKIE_NAME, now.toString());
                 }
-                document.body.innerHTML = `
-                    <div id="iframe-container">
-                        <iframe src="${CANVA_URL}" allowfullscreen></iframe>
-                    </div>
-                `;
+                const container = document.getElementById("container");
+                container.innerHTML = `<iframe id="canvaFrame" src="${CANVA_URL}" allowfullscreen></iframe>`;
+                const iframe = document.getElementById("canvaFrame");
+                iframe.style.display = "block";
             }
         };
     </script>
-</head>
-<body>
-    <p>ページを読み込み中...</p>
 </body>
 </html>
