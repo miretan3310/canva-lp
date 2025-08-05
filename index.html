@@ -11,13 +11,14 @@
             width: 100%;
             background: #ffffff; /* 黒背景防止 */
         }
-        iframe {
+        #canva-frame {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             border: none;
+            display: none; /* 初期は非表示 */
         }
     </style>
     <script>
@@ -35,12 +36,16 @@
                 if (!visitedAt) {
                     localStorage.setItem(COOKIE_NAME, now.toString());
                 }
-                document.body.innerHTML = `<iframe src="${CANVA_URL}" allowfullscreen></iframe>`;
+                const iframe = document.getElementById("canva-frame");
+                iframe.src = CANVA_URL;
+                iframe.style.display = "block";
+                document.getElementById("loading").style.display = "none";
             }
         };
     </script>
 </head>
 <body>
-    <p>ページを読み込み中...</p>
+    <p id="loading">ページを読み込み中...</p>
+    <iframe id="canva-frame" allowfullscreen></iframe>
 </body>
 </html>
