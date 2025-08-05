@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>LP 3日後リダイレクト</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            background: #ffffff; /* 黒背景防止 */
+        }
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
     <script>
         const REDIRECT_URL = "https://kyasha-bodymake.my.canva.site/close-seminar";
-        const CANVA_URL = "https://kyasha-bodymake.my.canva.site/promotion";
+        const CANVA_URL = "https://www.canva.com/design/DAGKRwgiu1Y/PNiYfK6FZyCj2PgOnPCSEg/view?embed";
         const COOKIE_NAME = "visitedAt";
 
         window.onload = function () {
@@ -18,7 +35,7 @@
                 if (!visitedAt) {
                     localStorage.setItem(COOKIE_NAME, now.toString());
                 }
-                window.location.href = CANVA_URL;
+                document.body.innerHTML = `<iframe src="${CANVA_URL}" allowfullscreen></iframe>`;
             }
         };
     </script>
